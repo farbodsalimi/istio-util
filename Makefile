@@ -6,6 +6,26 @@ ingress-info: ## Print Ingress Information
 	@echo "+ $@"
 	$(SHELL) -c './bin/istio/ingress.sh get_ingress_info'
 
+.PHONY: services
+services: ## Print istio pods
+	@echo "+ $@"
+	$(SHELL) -c './bin/istio/services.sh get_services'
+
+.PHONY: pods
+pods: ## Print istio services
+	@echo "+ $@"
+	$(SHELL) -c './bin/istio/services.sh get_pods'
+
+.PHONY: enable-injection
+enable-injection: ## Enable istio injection
+	@echo "+ $@"
+	$(SHELL) -c './bin/istio/services.sh enable_injection ${namespace}'
+
+.PHONY: disable-injection
+disable-injection: ## Disable istio injection
+	@echo "+ $@"
+	$(SHELL) -c './bin/istio/services.sh disable_injection ${namespace}'
+
 .PHONY: kiali
 kiali: ## Open Kiali
 	@echo "+ $@"
