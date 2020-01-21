@@ -51,6 +51,21 @@ kibana: ## Open Kibana
 	@echo "+ $@"
 	$(SHELL) -c './bin/observability/kibana.sh proxy'
 
+.PHONY: anthos-namespaces
+anthos-namespaces: ## List Namespaces managed by Anthos Config Management
+	@echo "+ $@"
+	$(SHELL) -c './bin/anthos/cluster.sh namespaces'
+
+.PHONY: anthos-cluster-roles
+anthos-cluster-roles: ## List ClusterRoles managed by Anthos Config Management
+	@echo "+ $@"
+	$(SHELL) -c './bin/anthos/cluster.sh cluster_roles'
+
+.PHONY: anthos-roles
+anthos-roles: ## List Roles managed by Anthos Config Management
+	@echo "+ $@"
+	$(SHELL) -c './bin/anthos/cluster.sh roles'
+
 .PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
