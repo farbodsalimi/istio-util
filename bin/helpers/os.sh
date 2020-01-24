@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function cmd_open() {
   case "$OSTYPE" in
   darwin*) open $1 ;;
@@ -6,3 +8,5 @@ function cmd_open() {
   *) echo "unknown os: $OSTYPE" ;;
   esac
 }
+
+"$@"
