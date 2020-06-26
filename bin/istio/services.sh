@@ -16,4 +16,8 @@ function disable_injection() {
   kubectl label namespace ${1} istio-injection-
 }
 
+function destination_rules() {
+  kubectl get destinationrules -o yaml
+}
+
 "$@"
